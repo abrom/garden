@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: garden_development
+
+test:
+  <<: *default
+  database: garden_test
+
+production:
+  <<: *default
+  database: garden_production

@@ -1,0 +1,6 @@
+asset 'ember' do
+  main_files [
+    'ember.prod.js',
+    'ember-template-compiler.js'
+  ]
+end
