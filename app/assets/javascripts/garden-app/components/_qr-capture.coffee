@@ -6,6 +6,10 @@ App.QrCaptureComponent = Em.Component.extend
   mozilla: Em.computed.equal 'type', 'mozilla'
   unsupported: Em.computed.equal 'type', 'unsupported'
 
+  boop: (->
+    @_speak 'beep'
+  ).observes 'qrcode'
+
   willInsertElement: ->
     @_setupCanvas()
     @set 'cameraLoadError', false
@@ -59,7 +63,15 @@ App.QrCaptureComponent = Em.Component.extend
     try
       @get('canvasContext').drawImage @$('video')[0], 0, 0
       @set 'qrcode', qrcode.decode()
-      console.log "p: " + JSON.stringify(qrcode.ab_points)
     catch
 
     Em.run.later @, @_captureFrame, 500
+
+  _speak: (text)->
+    u = new SpeechSynthesisUtterance()
+    u.text = text
+    u.lang = 'en-AU'
+    u.pitch = 1.5
+    u.rate = 1.5
+
+    speechSynthesis.speak u
