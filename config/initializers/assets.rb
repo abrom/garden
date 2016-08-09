@@ -4,7 +4,7 @@
 Rails.application.config.assets.version = '1.0'
 
 # Exclude all files starting with '_' but explicitly register the extensions we are interested in compiling
-config.assets.precompile.shift
+Rails.application.config.assets.precompile.shift
 precompile_path = Proc.new do |path|
   path.match(%r((^[^_\/]|\/[^_])[^\/]*$)) &&
     File.extname(path).in?([
@@ -12,4 +12,4 @@ precompile_path = Proc.new do |path|
       '.js', '.css' # Plain old JS/CSS
     ])
 end
-config.assets.precompile.push(precompile_path)
+Rails.application.config.assets.precompile.push(precompile_path)

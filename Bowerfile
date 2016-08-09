@@ -4,3 +4,5 @@ asset 'ember' do
     'ember-template-compiler.js'
   ]
 end
+asset 'ember-data'
+asset 'jsqrcode'
