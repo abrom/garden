@@ -1,3 +1,4 @@
 App.GardenRoute = Em.Route.extend
-  setupController: ->
-    App.CameraEnumeratorService.create().enumerateCameras @get('store')
+  setupController: (controller)->
+    App.CameraEnumeratorService.create().enumerateCameras(@get('store')).then (cameras)->
+      controller.set 'cameras', cameras

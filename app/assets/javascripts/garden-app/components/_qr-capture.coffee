@@ -43,11 +43,11 @@ App.QrCaptureComponent = Em.Component.extend
     Em.run.later @, @_captureFrame, 500
 
   cameraOptions: (->
-    if @get 'camera'
+    if @get 'camera.deviceId'
       { deviceId: { exact: @get 'camera.deviceId' } }
     else
       true
-  ).property 'camera', 'camera.deviceId'
+  ).property 'camera.deviceId'
 
   _setupCanvas: ->
     canvas = @$('#qr-canvas')[0]

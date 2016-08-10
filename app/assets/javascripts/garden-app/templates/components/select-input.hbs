@@ -1,0 +1,6 @@
+{{#if placeholder}}
+  <option disabled value selected={{not selected}}>{{placeholder}}</option>
+{{/if}}
+{{#each options as |option|}}
+  <option value={{get-property option valueKey}} selected={{eq selected option}}>{{get-property option textKey}}</option>
+{{/each}}
