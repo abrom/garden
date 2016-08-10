@@ -1,8 +1,3 @@
-{{#if mozilla}}
-  <video autoplay mozSrcObject={{videoSource}}></video>
-{{else}}
-  <video autoplay src={{videoSource}}></video>
-{{/if}}
-
+<video autoplay></video>
 <canvas id="qr-canvas" width="800" height="600" style="width: 800px; height: 600px; display: none"></canvas>
 <div>{{qrcode}}</div>

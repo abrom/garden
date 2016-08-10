@@ -12,7 +12,14 @@ App.QrCaptureComponent = Em.Component.extend
 
   willInsertElement: ->
     @_setupCanvas()
+    @set 'video', @$('video')[0]
+
+  changeCamera: (->
+    console.log 'cc here.'
     @set 'cameraLoadError', false
+
+    if @get 'stream'
+      @get('stream').getTracks().forEach (track) -> track.stop()
 
     if navigator.getUserMedia
       @set 'type', 'generic'
@@ -26,28 +33,36 @@ App.QrCaptureComponent = Em.Component.extend
     else
       return
 
-    mediaFunction.call navigator,
+    console.log @get 'camera.deviceId'
+
+    navigator.webkitGetUserMedia
       video: @get 'cameraOptions'
       audio: false
     , (stream) =>
+      @set 'stream', stream
+
       if @get 'webkit'
-        @set 'videoSource', window.URL.createObjectURL(stream)
+        @get('video').srcObject = stream
+#        window.URL.createObjectURL(stream)
       else if @get 'mozilla'
-        @set 'videoSource', stream
-        @$('video').play()
+        @get('video').mozSrcObject = stream
+        @$('video')[0].play()
       else
-        @set 'videoSource', stream
+        @get('video').src = stream
     , =>
       @set 'cameraLoadError', true
 
     Em.run.later @, @_captureFrame, 500
+  ).on('init').observes 'camera'
 
   cameraOptions: (->
     if @get 'camera.deviceId'
+      console.log 'here.. with d = ' + @get 'camera.deviceId'
       { deviceId: { exact: @get 'camera.deviceId' } }
     else
+      console.log 'plain'
       true
-  ).property 'camera.deviceId'
+  ).property 'camera', 'camera.deviceId'
 
   _setupCanvas: ->
     canvas = @$('#qr-canvas')[0]

@@ -8,23 +8,14 @@ if [[ -n $(git status -s) ]]; then
   fi
 fi
 
-echo -n "Deploy to Heroku? This will delete staging branch and recreate it before sending to heroku!! [Y/n]: "
-read confirmation
-if [[ "$confirmation" == "" || "$confirmation" == "y" || "$confirmation" == "Y" ]]; then
-  git branch -D staging
-  git checkout -b staging
-  RAILS_ENV=production bundle exec rake assets:precompile
-  git add .
-  git commit -am "staging"
-  git push -f heroku staging:master
+git push heroku master
 
-  echo -n "Migrate database? [Y/n]: "
-  read runmigration
-  if [[ "$runmigration" == "" || "$runmigration" == "y" || "$confirmation" == "Y" ]]; then
-    heroku run rake db:migrate --app plants-app
-  fi
-
-  git checkout master
-
-  echo "All done."
+echo -n "Migrate database? [Y/n]: "
+read runmigration
+if [[ "$runmigration" == "" || "$runmigration" == "y" || "$confirmation" == "Y" ]]; then
+  heroku run rake db:migrate --app plants-app
 fi
+
+git checkout master
+
+echo "All done."

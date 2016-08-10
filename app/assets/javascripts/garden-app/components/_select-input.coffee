@@ -4,4 +4,4 @@ App.SelectInputComponent = Em.Component.extend
   change: ->
     index = @element.selectedIndex
     index -= 1 if @get 'placeholder'
-    @set 'selected', @get('options')[index]
+    @set 'selected', @get('options').objectAt index
