@@ -73,7 +73,7 @@ App.QrCaptureComponent = Em.Component.extend
       canvasContext: context
 
   _captureFrame: ->
-    return unless @get 'videoSource'
+    return unless @get 'stream'
 
     try
       @get('canvasContext').drawImage @$('video')[0], 0, 0

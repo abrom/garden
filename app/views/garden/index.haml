@@ -1,5 +1,10 @@
-- content_for :head do
-  = javascript_include_tag 'garden-app/vendor'
-  = javascript_include_tag 'garden-app/application'
+%header.navbar.navbar-dark.navbar-static-top.bd-navbar.bg-plant.bg-inverse
+  .container
+    %nav
+      %ul.nav.navbar-nav
+        %li.nav-item.navbar-brand Garden Plants
+        %li.nav-item.pull-xs-right
+          = link_to 'Sign In', omniauth_authorize_path(provider: 'google'), class: 'nav-item nav-link'
 
-#garden-app
+.container
+  .text-xs-center= image_tag 'succulent.jpg', class: 'home-image'
