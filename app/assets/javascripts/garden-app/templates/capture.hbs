@@ -1,4 +1,8 @@
-{{qr-capture camera=currentCamera}}
-{{select-input options=cameras selected=currentCamera valueKey="deviceId" textKey="label"}}
+<div class="text-xs-center">
+  <div>
+    {{qr-capture camera=currentCamera}}
+    {{select-input options=cameras selected=currentCamera valueKey="deviceId" textKey="label"}}
+  </div>
 
-{{link-to 'Back' 'garden'}}
+  {{link-to 'Back' 'garden' class="btn btn-primary"}}
+</div>
