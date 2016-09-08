@@ -1,2 +1,52 @@
-{{qr-capture camera=currentCamera}}
-{{select-input options=cameras selected=currentCamera valueKey="deviceId" textKey="label"}}
+<header class="navbar navbar-dark navbar-static-top bd-navbar bg-plant bg-inverse">
+  <div class="container">
+    <nav>
+      <ul class="nav navbar-nav">
+        <li class="nav-item navbar-brand">Garden Plants</li>
+        <li class="nav-item pull-xs-right">
+          <a href="#" class="nav-item nav-link">Sign In</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-xs-6">
+      {{#link-to "capture" class="btn btn-primary btn-sq-lg"}}
+        <div>
+          <i class="fa fa-camera fa-4x" aria-hidden="true"></i>
+          <h3>Capture</h3>
+        </div>
+      {{/link-to}}
+    </div>
+
+    <div class="col-md-3 col-xs-6">
+      {{#link-to "capture" class="btn btn-primary btn-sq-lg"}}
+        <div>
+          <i class="fa fa-camera fa-4x" aria-hidden="true"></i>
+          <h3>Capture</h3>
+        </div>
+      {{/link-to}}
+    </div>
+
+    <div class="col-md-3 col-xs-6">
+      {{#link-to "capture" class="btn btn-primary btn-sq-lg"}}
+        <div>
+          <i class="fa fa-camera fa-4x" aria-hidden="true"></i>
+          <h3>Capture</h3>
+        </div>
+      {{/link-to}}
+    </div>
+
+    <div class="col-md-3 col-xs-6">
+      {{#link-to "capture" class="btn btn-primary btn-sq-lg"}}
+        <div>
+          <i class="fa fa-camera fa-4x" aria-hidden="true"></i>
+          <h3>Capture</h3>
+        </div>
+      {{/link-to}}
+    </div>
+  </div>
+</div>

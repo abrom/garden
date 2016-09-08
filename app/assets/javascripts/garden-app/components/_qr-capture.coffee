@@ -14,12 +14,18 @@ App.QrCaptureComponent = Em.Component.extend
     @_setupCanvas()
     @set 'video', @$('video')[0]
 
+  willDestroyElement: ->
+    @stopStream()
+
+  stopStream: ->
+    if @get 'stream'
+      @get('stream').getTracks().forEach (track) -> track.stop()
+
   changeCamera: (->
     console.log 'cc here.'
     @set 'cameraLoadError', false
 
-    if @get 'stream'
-      @get('stream').getTracks().forEach (track) -> track.stop()
+    @stopStream()
 
     if navigator.getUserMedia
       @set 'type', 'generic'

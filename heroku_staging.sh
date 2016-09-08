@@ -13,7 +13,7 @@ git push heroku master
 echo -n "Migrate database? [Y/n]: "
 read runmigration
 if [[ "$runmigration" == "" || "$runmigration" == "y" || "$confirmation" == "Y" ]]; then
-  heroku run rake db:migrate --app plants-app
+  heroku run rake db:migrate --app gardenplants
 fi
 
 git checkout master
