@@ -1,6 +1,6 @@
 App.QrCaptureComponent = Em.Component.extend
-  boop: (->
-    @_speak 'beep'
+  codeChanged: (->
+    @sendAction 'codeRead', @get('qrcode')
   ).observes 'qrcode'
 
   willInsertElement: ->
@@ -13,14 +13,11 @@ App.QrCaptureComponent = Em.Component.extend
   stopStream: ->
     if @get 'stream'
       @get('stream').getTracks().forEach (track) -> track.stop()
+      @set 'stream', null
 
   changeCamera: (->
-    console.log 'cc here.'
     @set 'cameraLoadError', false
-
     @stopStream()
-
-    console.log @get 'camera.deviceId'
 
     navigator.mediaDevices.getUserMedia(@get('cameraOptions')).then (stream)=>
       @set 'stream', stream
@@ -32,11 +29,11 @@ App.QrCaptureComponent = Em.Component.extend
 
   cameraOptions: (->
     if @get 'camera.deviceId'
-      console.log 'here.. with d = ' + @get 'camera.deviceId'
-      { video: { deviceId: { exact: @get 'camera.deviceId' } } }
+      video:
+        deviceId:
+          exact: @get 'camera.deviceId'
     else
-      console.log 'plain'
-      { video: true }
+      video: true
   ).property 'camera', 'camera.deviceId'
 
   _setupCanvas: ->
@@ -56,12 +53,3 @@ App.QrCaptureComponent = Em.Component.extend
     catch
 
     Em.run.later @, @_captureFrame, 500
-
-  _speak: (text)->
-    u = new SpeechSynthesisUtterance()
-    u.text = text
-    u.lang = 'en-AU'
-    u.pitch = 1.5
-    u.rate = 1.5
-
-    speechSynthesis.speak u

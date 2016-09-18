@@ -1,6 +1,6 @@
 <div class="text-xs-center">
   <div>
-    {{qr-capture camera=currentCamera}}
+    {{qr-capture camera=currentCamera codeRead="handleCode"}}
     {{select-input options=cameras selected=currentCamera valueKey="deviceId" textKey="label"}}
   </div>
 
