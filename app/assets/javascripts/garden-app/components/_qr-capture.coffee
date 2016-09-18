@@ -1,11 +1,4 @@
 App.QrCaptureComponent = Em.Component.extend
-  type: 'unsupported'
-
-  generic: Em.computed.equal 'type', 'generic'
-  webkit: Em.computed.equal 'type', 'webkit'
-  mozilla: Em.computed.equal 'type', 'mozilla'
-  unsupported: Em.computed.equal 'type', 'unsupported'
-
   boop: (->
     @_speak 'beep'
   ).observes 'qrcode'
@@ -27,36 +20,12 @@ App.QrCaptureComponent = Em.Component.extend
 
     @stopStream()
 
-    if navigator.getUserMedia
-      @set 'type', 'generic'
-      mediaFunction = navigator.getUserMedia
-    else if navigator.webkitGetUserMedia
-      @set 'type', 'webkit'
-      mediaFunction = navigator.webkitGetUserMedia
-    else if navigator.mozGetUserMedia
-      @set 'type', 'mozilla'
-      mediaFunction = navigator.mozGetUserMedia
-    else
-      return
-
     console.log @get 'camera.deviceId'
 
-    navigator.webkitGetUserMedia
-      video: @get 'cameraOptions'
-      audio: false
-    , (stream) =>
+    navigator.mediaDevices.getUserMedia(@get('cameraOptions')).then (stream)=>
       @set 'stream', stream
-
-      if @get 'webkit'
-        @get('video').srcObject = stream
-#        window.URL.createObjectURL(stream)
-      else if @get 'mozilla'
-        @get('video').mozSrcObject = stream
-        @$('video')[0].play()
-      else
-        @get('video').src = stream
-    , =>
-      @set 'cameraLoadError', true
+      @get('video').srcObject = stream
+    .catch => @set 'cameraLoadError', true
 
     Em.run.later @, @_captureFrame, 500
   ).on('init').observes 'camera'
@@ -64,10 +33,10 @@ App.QrCaptureComponent = Em.Component.extend
   cameraOptions: (->
     if @get 'camera.deviceId'
       console.log 'here.. with d = ' + @get 'camera.deviceId'
-      { deviceId: { exact: @get 'camera.deviceId' } }
+      { video: { deviceId: { exact: @get 'camera.deviceId' } } }
     else
       console.log 'plain'
-      true
+      { video: true }
   ).property 'camera', 'camera.deviceId'
 
   _setupCanvas: ->

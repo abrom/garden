@@ -19,3 +19,5 @@
 //= require 'jsqrcode/src/findpat'
 //= require 'jsqrcode/src/alignpat'
 //= require 'jsqrcode/src/databr'
+
+//= require 'adapter'
