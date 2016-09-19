@@ -18,4 +18,4 @@ App.CameraButtonComponent = Em.Component.extend
 
   actions:
     clicked: ->
-      @sendAction @get 'camera'
+      @sendAction 'clicked', @get('camera')
