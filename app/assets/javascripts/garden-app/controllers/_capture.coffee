@@ -11,6 +11,8 @@ App.CaptureController = Em.Controller.extend
       @set 'storage.cameraId', @get 'currentCamera.deviceId'
   ).observes 'currentCamera'
 
+  multipleCameras: Em.computed.gt 'cameras.length', 1
+
   actions:
     changeCamera: (camera)->
       @set 'currentCamera', camera
