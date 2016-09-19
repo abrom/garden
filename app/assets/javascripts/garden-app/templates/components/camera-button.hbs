@@ -1,4 +1,6 @@
 <div {{action "clicked"}}>
   <i class="fa fa-camera fa-4x" aria-hidden="true"></i>
-  {{description}}
+  {{#if description}}
+    <h3>{{description}}<h3>
+  {{/if}}
 </div>
