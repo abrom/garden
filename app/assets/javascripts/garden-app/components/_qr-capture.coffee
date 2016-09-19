@@ -47,9 +47,11 @@ App.QrCaptureComponent = Em.Component.extend
   _captureFrame: ->
     return unless @get 'stream'
 
+    start = performance.now()
     try
       @get('canvasContext').drawImage @$('video')[0], 0, 0
       @set 'qrcode', qrcode.decode()
     catch
+    end = performance.now()
 
-    Em.run.later @, @_captureFrame, 500
+    Em.run.later @, @_captureFrame, Math.min(Math.max(end - start, 100), 500)
