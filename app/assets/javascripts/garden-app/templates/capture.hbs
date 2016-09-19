@@ -3,23 +3,25 @@
     {{qr-capture camera=currentCamera codeRead="handleCode"}}
   </div>
 
-  <div class="row">
-    <div class="col-xs-3">
-      {{#link-to 'garden' class="btn btn-primary btn-sq-md flex-center"}}
-        <div>
-          <i class="fa fa-arrow-left fa-6x" aria-hidden="true"></i>
-        </div>
-      {{/link-to}}
-    </div>
-
-    {{#if multipleCameras}}
-      <div class="col-xs-9">
-        <div class="pull-right">
-          {{#each cameras as |camera|}}
-            {{camera-button camera=camera action="changeCamera"}}
-          {{/each}}
-        </div>
+  <div class="button-controls">
+    <div class="row">
+      <div class="col-xs-3">
+        {{#link-to 'garden' class="btn btn-primary btn-sq-md flex-center"}}
+          <div>
+            <i class="fa fa-arrow-left fa-6x" aria-hidden="true"></i>
+          </div>
+        {{/link-to}}
       </div>
-    {{/if}}
+
+      {{#if multipleCameras}}
+        <div class="col-xs-9">
+          <div class="pull-right">
+            {{#each cameras as |camera|}}
+              {{camera-button camera=camera action="changeCamera"}}
+            {{/each}}
+          </div>
+        </div>
+      {{/if}}
+    </div>
   </div>
 </div>
