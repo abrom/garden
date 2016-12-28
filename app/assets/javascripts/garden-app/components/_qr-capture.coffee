@@ -3,7 +3,7 @@ App.QrCaptureComponent = Em.Component.extend
     @sendAction 'codeRead', @get('qrcode')
   ).observes 'qrcode'
 
-  willInsertElement: ->
+  didInsertElement: ->
     @_setupCanvas()
     @set 'video', @$('video')[0]
 
