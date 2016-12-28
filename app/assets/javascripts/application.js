@@ -10,6 +10,11 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require .
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+
+window.Tether = function () {
+  throw new Error('Your Bootstrap may actually need Tether.');
+};
