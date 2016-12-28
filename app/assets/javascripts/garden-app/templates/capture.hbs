@@ -1,11 +1,11 @@
-<div class="text-xs-center">
-  <div>
+<div class="text-xs-center row">
+  <div class="col-sm-9 col-xs-12">
     {{qr-capture camera=currentCamera codeRead="handleCode"}}
   </div>
 
-  <div class="button-controls">
+  <div class="text-sm-right col-sm-3 col-xs-12 button-controls">
     <div class="row">
-      <div class="col-xs-3">
+      <div class="col-sm-12 col-xs-3">
         {{#link-to 'garden' class="btn btn-primary btn-sq-md flex-center"}}
           <div>
             <i class="fa fa-arrow-left fa-6x" aria-hidden="true"></i>
@@ -14,8 +14,8 @@
       </div>
 
       {{#if multipleCameras}}
-        <div class="col-xs-9">
-          <div class="pull-right">
+        <div class="col-sm-12 col-xs-9">
+          <div class="pull-right-xs">
             {{#each cameras as |camera|}}
               {{camera-button camera=camera clicked="changeCamera"}}
             {{/each}}
