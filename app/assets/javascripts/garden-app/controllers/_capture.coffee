@@ -1,5 +1,5 @@
 App.CaptureController = Em.Controller.extend
-  setDefault: (->
+  loadDefault: (->
     if @get 'storage.cameraId'
       @set 'currentCamera', @get('cameras').findBy('deviceId', @get('storage.cameraId'))
     else
