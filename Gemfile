@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-ruby '2.2.3'
-gem 'rails', '4.2.7'
+ruby '2.4.0'
+gem 'rails', '5.0.1'
 
 gem 'unicorn'
 gem 'pg'
@@ -23,6 +23,8 @@ gem 'font-awesome-sass'
 gem 'rails_12factor', group: :production
 
 gem 'omniauth-google-oauth2'
+gem 'schema_auto_foreign_keys'
+gem 'colored'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
