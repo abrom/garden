@@ -1,9 +1,9 @@
-%header.navbar.navbar-dark.navbar-static-top.bd-navbar.bg-plant.bg-inverse
+%header.navbar.navbar-full.navbar-dark.navbar-static-top.bd-navbar.bg-plant.bg-inverse
   .container
     %nav
       %ul.nav.navbar-nav
         %li.nav-item.navbar-brand Garden Plants
-        %li.nav-item.pull-xs-right
+        %li.nav-item.float-xs-right
           = link_to 'Sign In', omniauth_authorize_path(provider: 'google'), class: 'nav-item nav-link'
 
 .container
