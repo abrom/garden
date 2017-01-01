@@ -12,6 +12,7 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'bower-rails'
 gem 'haml-rails'
+gem 'active_model_serializers', '~> 0.9.0'
 
 gem 'handlebars_assets'
 gem 'bootstrap'
@@ -27,6 +28,8 @@ gem 'schema_auto_foreign_keys'
 gem 'colored'
 gem 'carrierwave'
 gem 'paranoia'
+gem 'json', '~> 2.0'
+gem 'mini_magick'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

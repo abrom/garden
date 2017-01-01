@@ -7,7 +7,7 @@ App.VideoCaptureComponent = Em.Component.extend
   ).observes 'qrcode'
 
   click: ->
-    @sendAction 'captureClick' if @get 'photoMode'
+    @_getImage() if @get 'photoMode'
 
   didInsertElement: ->
     @_setupCanvas()
@@ -31,7 +31,6 @@ App.VideoCaptureComponent = Em.Component.extend
     .catch => @set 'cameraLoadError', true
 
     if @get 'qrMode'
-      console.log 'whaa'
       Em.run.later @, @_captureFrame, 500
   ).on('init').observes 'camera'
 
@@ -57,9 +56,18 @@ App.VideoCaptureComponent = Em.Component.extend
 
     start = performance.now()
     try
-      @get('canvasContext').drawImage @$('video')[0], 0, 0
+      @_saveImage()
       @set 'qrcode', qrcode.decode @get('canvasContext')
     catch
     end = performance.now()
 
     Em.run.later @, @_captureFrame, Math.min(Math.max(end - start, 100), 500)
+
+  _saveImage: ->
+    @get('canvasContext').drawImage @$('video')[0], 0, 0
+
+  _getImage: ->
+    @_saveImage()
+    @get('canvas').toBlob (blob)=>
+      @sendAction 'captureClick', blob
+    , 'image/png'

@@ -1,6 +1,7 @@
 //= require 'ember/ember-template-compiler'
 //= require 'ember/ember.prod'
 //= require 'ember-data/ember-data'
+//= require 'active-model-adapter/active-model-adapter'
 
 //= require 'jsqrcode/src/grid'
 //= require 'jsqrcode/src/version'

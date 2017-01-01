@@ -1,4 +1,11 @@
 App.CameraInputComponent = Em.Component.extend
+  store: Em.inject.service()
+
+  didInsertElement: ->
+    @get('store').peekAll('camera').invoke 'unloadRecord'
+    App.CameraEnumeratorService.create().enumerateCameras(@get('store')).then (cameras)=>
+      @set 'cameras', cameras
+
   loadDefault: (->
     if @get 'storage.cameraId'
       @set 'currentCamera', @get('cameras').findBy('deviceId', @get('storage.cameraId'))
@@ -18,5 +25,5 @@ App.CameraInputComponent = Em.Component.extend
       @set 'currentCamera', camera
 
     backClick: -> @sendAction 'backClick'
-    captureClick: -> @sendAction 'captureClick'
+    captureClick: (image)-> @sendAction 'captureClick', image
     handleCode: (code)-> @sendAction 'handleCode', code

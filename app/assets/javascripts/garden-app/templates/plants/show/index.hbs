@@ -1,0 +1,10 @@
+I'm a plant!
+
+<div>Genus: {{model.species.genus.name}}</div>
+<div>Species: {{model.species.name}}</div>
+
+<div>
+  {{#each model.photos as |photo|}}
+    <img src="{{photo.thumbUrl}}" class="img-thumbnail" style="max-height: 200px">
+  {{/each}}
+</div>
