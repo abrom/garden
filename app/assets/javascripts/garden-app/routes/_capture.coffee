@@ -1,10 +1,19 @@
-App.CaptureRoute = Em.Route.extend App.Speakable,
-  setupController: (controller)->
+App.CaptureRoute = App.MenuRoute.extend App.Speakable,
+  hideMenu: true
+
+  setupController: (controller, model)->
+    @_super controller, model
     @get('store').peekAll('camera').invoke 'unloadRecord'
     App.CameraEnumeratorService.create().enumerateCameras(@get('store')).then (cameras)->
       controller.set 'cameras', cameras
 
   actions:
+    backClick: ->
+      @transitionTo 'garden'
+
+#    captureClick: ->
+#      @speak 'boop'
+#
     handleCode: (code)->
       @speak 'beep'
 

@@ -1,0 +1,27 @@
+<div class="text-xs-center capture container">
+  <div class="row">
+    <div class="col-sm-9 col-xs-12">
+      {{video-capture camera=currentCamera mode=mode codeRead="handleCode" captureClick="captureClick"}}
+    </div>
+
+    <div class="text-sm-right col-sm-3 col-xs-12 button-controls">
+      <div class="row">
+        <div class="col-sm-12 col-xs-3">
+          <div class="btn btn-primary btn-sq-md flex-center" {{action 'backClick'}}>
+            <i class="fa fa-arrow-left fa-6x" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        {{#if multipleCameras}}
+          <div class="col-sm-12 col-xs-9">
+            <div class="pull-right-xs">
+              {{#each cameras as |camera|}}
+                {{camera-button camera=camera clicked="changeCamera"}}
+              {{/each}}
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

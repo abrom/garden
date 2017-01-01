@@ -5,4 +5,4 @@ asset 'ember' do
   ]
 end
 asset 'ember-data'
-asset 'jsqrcode'
+asset 'jsqrcode', 'git@github.com:abrom/jsqrcode'

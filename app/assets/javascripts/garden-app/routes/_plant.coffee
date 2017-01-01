@@ -1,1 +1,1 @@
-App.PlantRoute = Em.Route.extend()
+App.PlantRoute = App.MenuRoute.extend()

@@ -1,7 +1,8 @@
 App.Router.map ->
   @resource 'garden', path: '/'
-  @resource 'capture', path: '/capture'
-  @resource 'plant', path: '/plant/:id'
+  @route 'capture'
+  @resource 'plants', path: '/plants/:id', ->
+    @route 'capture'
 
 App.Router.reopen
   location: 'auto'

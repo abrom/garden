@@ -25,6 +25,8 @@ gem 'rails_12factor', group: :production
 gem 'omniauth-google-oauth2'
 gem 'schema_auto_foreign_keys'
 gem 'colored'
+gem 'carrierwave'
+gem 'paranoia'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

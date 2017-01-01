@@ -6,6 +6,7 @@
 //= require_tree ./components
 //= require_tree ./controllers
 //= require_tree ./services
+//= require ./routes/_menu
 //= require_tree ./routes
 //= require ./_router
 //= require_tree ./initializers
