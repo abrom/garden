@@ -6,4 +6,4 @@ asset 'ember' do
 end
 asset 'ember-data'
 asset 'active-model-adapter'
-asset 'jsqrcode', 'git@github.com:abrom/jsqrcode'
+asset 'jsqrcode', 'https://github.com/abrom/jsqrcode.git'
