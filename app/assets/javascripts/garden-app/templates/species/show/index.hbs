@@ -1,0 +1,36 @@
+<div class="row mt-1">
+  <div class="col-xs-7">
+    <h3>Species - {{humanize model.name}}</h3>
+  </div>
+  <div class="col-xs-5">
+    <button type="button" class="btn btn-primary float-xs-right" {{action 'addNewPlant'}}>Add New Plant</button>
+  </div>
+</div>
+
+{{#if model.hasPlants}}
+  <p>Plants:</p>
+
+  <ul class="list-group">
+    {{#each model.plants as |plant index|}}
+      <li class="list-group-item" {{action 'showPlant' plant}} role="button">
+        <div class="row">
+          <div class="col-sm-1 col-xs-2">
+            {{add index 1}}.
+          </div>
+          <div class="col-sm-8 col-xs-7">
+            Added {{plant.niceDateAdded}}
+          </div>
+          <div class="col-xs-3">
+            {{#if plant.mostRecentPhoto}}
+              <span class="img-thumbnail img-thumbnail-sm float-xs-right">
+                <img src="{{plant.mostRecentPhoto.thumbUrl}}">
+              </span>
+            {{/if}}
+          </div>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No plants for this species yet</p>
+{{/if}}

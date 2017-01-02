@@ -14,4 +14,11 @@ App.Species = DS.Model.extend
   confidence_level: DS.attr 'string'
   hybrid: DS.attr 'boolean'
 
+  plantCount: DS.attr 'number'
+
   genus: DS.belongsTo 'genus'
+  plants: DS.hasMany 'plants'
+
+  hasPlants: (->
+    @get('plantCount') > 0 || @get('plants.length') > 0
+  ).property 'plantCount', 'plants.@each'

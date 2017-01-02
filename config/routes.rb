@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   namespace :api, defaults: { format: :json }, except: %i(new edit) do
     namespace :v1 do
-      resources :plants, only: [:show]
+      resources :plants, only: [:show, :create]
       resources :photos, only: [:create]
+      resources :species, only: [:index, :show]
     end
   end
 

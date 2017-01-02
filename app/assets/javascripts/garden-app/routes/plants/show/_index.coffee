@@ -8,3 +8,6 @@ App.PlantsShowIndexRoute = App.MenuRoute.extend
 
     showPhoto: (photo)->
       @send 'openModal', 'photos.show', photo
+
+    showSpecies: ->
+      @transitionTo 'species.show.index', @get('controller.model.species')

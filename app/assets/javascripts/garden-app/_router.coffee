@@ -4,6 +4,9 @@ App.Router.map ->
   @resource 'plants', ->
     @route 'show', path: ':id', ->
       @route 'capture'
+  @resource 'species', ->
+    @route 'show', path: ':id', ->
+      @route 'new_plant'
 
 App.Router.reopen
   location: 'auto'

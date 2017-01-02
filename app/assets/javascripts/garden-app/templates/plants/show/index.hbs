@@ -1,16 +1,18 @@
-I'm a plant!
+<div class="mt-1">
+  <div>Genus: {{humanize model.species.genus.name}}</div>
+  <div>Species: {{humanize model.species.name}}</div>
 
-<div>Genus: {{model.species.genus.name}}</div>
-<div>Species: {{model.species.name}}</div>
+  <div class="thumbnails mb-1">
+    {{#each model.photos as |photo|}}
+      <span class="img-thumbnail">
+        <img src="{{photo.thumbUrl}}" {{action 'showPhoto' photo}}>
+      </span>
+    {{/each}}
 
-<div class="thumbnails">
-  {{#each model.photos as |photo|}}
     <span class="img-thumbnail">
-      <img src="{{photo.thumbUrl}}" {{action 'showPhoto' photo}}>
+      <div class="add-photo" {{action 'addPhoto'}} title="Add new photo">+</div>
     </span>
-  {{/each}}
+  </div>
 
-  <span class="img-thumbnail">
-    <div class="add-photo" {{action 'addPhoto'}}>+</div>
-  </span>
+  <button type="button" class="btn btn-primary" {{action 'showSpecies'}}>Back to species</button>
 </div>
