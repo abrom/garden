@@ -5,7 +5,6 @@
 //= require_tree ./models
 //= require_tree ./adapters
 //= require_tree ./components
-//= require ./controllers/_modal
 //= require_tree ./controllers
 //= require_tree ./services
 //= require ./routes/_menu

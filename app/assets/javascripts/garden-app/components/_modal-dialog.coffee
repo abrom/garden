@@ -9,3 +9,6 @@ App.ModalDialogComponent = Em.Component.extend
       when 'small' then 'modal-sm'
       else ''
   ).property 'size'
+
+  showHeader: Em.computed.or 'showCloseButton', 'showTitle'
+  showTitle: Em.computed.notEmpty 'title'

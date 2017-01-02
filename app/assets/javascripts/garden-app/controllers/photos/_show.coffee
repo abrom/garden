@@ -1,1 +1,4 @@
-App.PhotosShowController = App.ModalController.extend()
+App.PhotosShowController = App.ModalController.extend
+  title: (->
+    "Taken " + @get('model.niceDateTaken')
+  ).property 'model.niceDateTaken'
