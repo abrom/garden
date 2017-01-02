@@ -1,7 +1,7 @@
 class PhotoSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :url, :thumb_url
+  attributes :id, :plant_id, :url, :thumb_url, :date_taken
 
   private
 
@@ -11,5 +11,13 @@ class PhotoSerializer < ActiveModel::Serializer
 
   def thumb_url
     object.photo.thumb.url
+  end
+
+  def plant_id
+    object.imageable_id
+  end
+
+  def date_taken
+    object.created_at
   end
 end

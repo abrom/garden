@@ -7,3 +7,4 @@ end
 asset 'ember-data'
 asset 'active-model-adapter'
 asset 'jsqrcode', 'https://github.com/abrom/jsqrcode.git'
+asset 'moment'

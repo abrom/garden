@@ -64,10 +64,12 @@ App.VideoCaptureComponent = Em.Component.extend
     Em.run.later @, @_captureFrame, Math.min(Math.max(end - start, 100), 500)
 
   _saveImage: ->
-    @get('canvasContext').drawImage @$('video')[0], 0, 0
+    video = @$('video')
+    @get('canvasContext').drawImage video[0], 0, 0, 800, 600
 
   _getImage: ->
     @_saveImage()
+
     @get('canvas').toBlob (blob)=>
       @sendAction 'captureClick', blob
     , 'image/png'

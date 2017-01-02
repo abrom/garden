@@ -2,6 +2,7 @@
 //= require 'ember/ember.prod'
 //= require 'ember-data/ember-data'
 //= require 'active-model-adapter/active-model-adapter'
+//= require 'moment/moment'
 
 //= require 'jsqrcode/src/grid'
 //= require 'jsqrcode/src/version'

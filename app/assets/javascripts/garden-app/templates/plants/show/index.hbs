@@ -3,8 +3,14 @@ I'm a plant!
 <div>Genus: {{model.species.genus.name}}</div>
 <div>Species: {{model.species.name}}</div>
 
-<div>
+<div class="thumbnails">
   {{#each model.photos as |photo|}}
-    <img src="{{photo.thumbUrl}}" class="img-thumbnail" style="max-height: 200px">
+    <span class="img-thumbnail">
+      <img src="{{photo.thumbUrl}}" {{action 'showPhoto' photo}}>
+    </span>
   {{/each}}
+
+  <span class="img-thumbnail">
+    <div class="add-photo" {{action 'addPhoto'}}>+</div>
+  </span>
 </div>
