@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161231103347) do
+ActiveRecord::Schema.define(version: 20170104141846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20161231103347) do
   end
 
   create_table "species", force: :cascade do |t|
-    t.string   "name",                  :null=>false
+    t.string   "name",                  :null=>false, :index=>{:name=>"index_species_unique", :with=>["genus_id", "infraspecific_rank", "infraspecific_epithet"], :unique=>true, :using=>:btree}
     t.string   "common_name"
     t.string   "description"
     t.string   "authorship"
