@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-ruby '2.4.0'
+ruby '2.5.1'
 
 gem 'dotenv-rails'
 
-gem 'rails', '5.0.1'
+gem 'rails', '5.2.1'
 
 gem 'unicorn'
 gem 'pg'
@@ -27,7 +27,6 @@ gem 'font-awesome-sass'
 gem 'rails_12factor', group: :production
 
 gem 'omniauth-google-oauth2'
-gem 'schema_auto_foreign_keys'
 gem 'colored'
 gem 'carrierwave'
 gem 'paranoia'
@@ -40,7 +39,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
   gem 'spring'
   gem 'capistrano'
   gem 'capistrano-rails'

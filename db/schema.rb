@@ -10,69 +10,71 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170104141846) do
+ActiveRecord::Schema.define(version: 2017_01_04_141846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "families", force: :cascade do |t|
-    t.string   "name",        :null=>false
-    t.string   "description"
-    t.integer  "major_group", :null=>false
+  create_table "families", id: :serial, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.integer "major_group", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "genera", force: :cascade do |t|
-    t.string   "name",        :null=>false
-    t.string   "description"
-    t.boolean  "hybrid",      :default=>false, :null=>false
-    t.integer  "family_id",   :null=>false, :foreign_key=>{:references=>"families", :name=>"fk_genera_family_id", :on_update=>:no_action, :on_delete=>:no_action}
+  create_table "genera", id: :serial, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.boolean "hybrid", default: false, null: false
+    t.integer "family_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.string   "imageable_type", :null=>false
-    t.integer  "imageable_id",   :null=>false
-    t.string   "photo",          :null=>false
-    t.datetime "deleted_at",     :index=>{:name=>"index_photos_on_deleted_at", :using=>:btree}
+  create_table "photos", id: :serial, force: :cascade do |t|
+    t.string "imageable_type", null: false
+    t.integer "imageable_id", null: false
+    t.string "photo", null: false
+    t.datetime "deleted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["deleted_at"], name: "index_photos_on_deleted_at"
+  end
+
+  create_table "plants", id: :serial, force: :cascade do |t|
+    t.integer "species_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "species", force: :cascade do |t|
-    t.string   "name",                  :null=>false, :index=>{:name=>"index_species_unique", :with=>["genus_id", "infraspecific_rank", "infraspecific_epithet"], :unique=>true, :using=>:btree}
-    t.string   "common_name"
-    t.string   "description"
-    t.string   "authorship"
-    t.string   "source"
-    t.string   "source_id"
-    t.string   "combined_source_id"
-    t.string   "ipni_id"
-    t.string   "publication"
-    t.string   "collation"
-    t.integer  "date"
-    t.string   "infraspecific_rank"
-    t.string   "infraspecific_epithet"
-    t.integer  "taxonomic_status",      :null=>false
-    t.integer  "confidence_level"
-    t.boolean  "hybrid",                :default=>false, :null=>false
-    t.integer  "genus_id",              :null=>false, :foreign_key=>{:references=>"genera", :name=>"fk_species_genus_id", :on_update=>:no_action, :on_delete=>:no_action}
+  create_table "species", id: :serial, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "common_name"
+    t.string "description"
+    t.string "authorship"
+    t.string "source"
+    t.string "source_id"
+    t.string "combined_source_id"
+    t.string "ipni_id"
+    t.string "publication"
+    t.string "collation"
+    t.integer "date"
+    t.string "infraspecific_rank"
+    t.string "infraspecific_epithet"
+    t.integer "taxonomic_status", null: false
+    t.integer "confidence_level"
+    t.boolean "hybrid", default: false, null: false
+    t.integer "genus_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["name", "genus_id", "infraspecific_rank", "infraspecific_epithet"], name: "index_species_unique", unique: true
   end
 
-  create_table "plants", force: :cascade do |t|
-    t.integer  "species_id", :null=>false, :foreign_key=>{:references=>"species", :name=>"fk_plants_species_id", :on_update=>:no_action, :on_delete=>:no_action}
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email",      :null=>false
-    t.string   "google_uid"
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.string "email", null: false
+    t.string "google_uid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
