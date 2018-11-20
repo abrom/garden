@@ -125,7 +125,7 @@ GEM
     json (2.1.0)
     jwt (1.5.6)
     kgio (2.11.2)
-    loofah (2.2.2)
+    loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -288,7 +288,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.5.3p105
 
 BUNDLED WITH
-   1.16.6
+   1.17.1
