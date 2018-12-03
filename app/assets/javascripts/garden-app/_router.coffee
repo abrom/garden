@@ -5,6 +5,7 @@ App.Router.map ->
     @route 'show', path: ':id', ->
       @route 'capture'
   @resource 'species', ->
+    @route 'new'
     @route 'show', path: ':id', ->
       @route 'new_plant'
 
