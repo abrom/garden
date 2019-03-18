@@ -3,7 +3,7 @@
     <h3>Species - {{humanize model.name}}</h3>
   </div>
   <div class="col-xs-5">
-    <button type="button" class="btn btn-primary float-xs-right" {{action 'addNewPlant'}}>Add New Plant</button>
+    <button type="button" class="btn btn-primary float-right" {{action 'addNewPlant'}}>Add New Plant</button>
   </div>
 </div>
 
@@ -22,7 +22,7 @@
           </div>
           <div class="col-xs-3">
             {{#if plant.mostRecentPhoto}}
-              <span class="img-thumbnail img-thumbnail-sm float-xs-right">
+              <span class="img-thumbnail img-thumbnail-sm float-right">
                 <img src="{{plant.mostRecentPhoto.thumbUrl}}">
               </span>
             {{/if}}
