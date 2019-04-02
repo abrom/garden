@@ -4,7 +4,7 @@ ruby '2.5.3'
 
 gem 'dotenv-rails'
 
-gem 'rails', '5.2.1'
+gem 'rails', '~> 5.2.0'
 
 gem 'unicorn'
 gem 'pg'
