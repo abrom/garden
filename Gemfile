@@ -10,7 +10,7 @@ gem 'unicorn'
 gem 'pg'
 
 gem 'uglifier'
-gem 'sass-rails'
+gem 'sassc-rails'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'bower-rails'
