@@ -28,7 +28,7 @@ gem 'rails_12factor', group: :production
 
 gem 'omniauth-google-oauth2'
 gem 'colored'
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 gem 'paranoia'
 gem 'json', '~> 2.0'
 gem 'mini_magick'
